@@ -6,11 +6,11 @@
 CREATE DATABASE store;
 ```
 
-2. Создание пользователя `storetester` и выдача соответствующих прав
+2. Создание пользователя `storetester`
 ```
 CREATE USER storetester WITH PASSWORD 'supersecretpassword';
 ```
-
+и выдача соответствующих прав
 ```
 GRANT ALL PRIVILEGES ON DATABASE store TO storetester;
 ```
