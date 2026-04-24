@@ -6,6 +6,16 @@ on:
 jobs:
   migrate:
     runs-on: ubuntu-latest
+
+    services: 
+      postgres:
+        image: postgres:13 
+        env: 
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
+        ports:
+          - 5432:5432
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
