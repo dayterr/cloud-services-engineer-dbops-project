@@ -10,6 +10,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    # Устанавливаем JDK
+    - name: Install JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    #  Устанавливаем Flyway
+    - name: Install Flyway
+      run: |
+        curl -L -o flyway-commandline.tar.gz "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/11.1.0/flyway-commandline-11.1.0-linux-x64.tar.gz"
+        tar -xzf flyway-commandline.tar.gz
+        sudo ln -s `pwd`/flyway-11.1.0/flyway /usr/local/bin/flyway
+
     #### Добавьте шаг с Flyway-миграциями
     - name: Apply Flyway migrations
       env:
